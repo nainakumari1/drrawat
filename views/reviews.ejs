@@ -1,0 +1,22 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="page-hero"><span class="blob b1"></span><div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <span>Reviews</span></nav>
+  <h1 class="reveal">What our patients say</h1>
+  <p class="lead reveal d1">Patient feedback on gentle treatment, clear explanations, comfort and cleanliness.</p>
+</div></section>
+<section class="section"><div class="wrap">
+  <% if (site.ratings.show) { %><p class="center reveal"><strong><%= site.ratings.score %> ★</strong> from <%= site.ratings.count %> reviews on <%= site.ratings.source %> · <%= site.ratings.asOf %></p><% } %>
+  <div class="rv-grid"><% site.reviews.forEach(function (r, i) { %><%- include('partials/reviewcard', { r: r, delay: 'd' + (i % 3) }) %><% }) %></div>
+  <div class="sec-head reveal" style="margin-top:56px"><h2>What patients mention most</h2></div>
+  <ul class="ticks theme-list reveal">
+    <li><%- icon('check') %> A gentle, careful approach, especially for nervous patients</li>
+    <li><%- icon('check') %> Clear explanations of conditions and treatment</li>
+    <li><%- icon('check') %> Smooth, comfortable fillings and extractions</li>
+    <li><%- icon('check') %> A clean, well-maintained clinic</li>
+    <li><%- icon('check') %> Friendly staff and short waiting times</li>
+  </ul>
+  <div class="review-cta reveal"><h3>Visit us and see for yourself</h3><p>Find the clinic on Google Maps or book a checkup.</p>
+    <p class="cta-links"><a class="btn btn-book" href="/contact#book">Book an Appointment</a><a class="btn btn-ghost-dark" href="<%= site.mapsLink %>" target="_blank" rel="noopener"><%- icon('pin') %> Google Maps</a></p></div>
+</div></section>
+<%- include('partials/footer') %>

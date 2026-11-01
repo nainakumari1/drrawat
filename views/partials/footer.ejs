@@ -1,0 +1,65 @@
+</main>
+
+<section class="cta-band reveal">
+  <div class="wrap cta-in">
+    <div>
+      <h2>Ready for a gentler dental visit?</h2>
+      <p>Send an appointment enquiry and the clinic will contact you, or call 096540 87169.</p>
+    </div>
+    <div class="cta-btns">
+      <a class="btn btn-book btn-lg" href="/contact#book">Book an Appointment</a>
+      <a class="btn btn-ghost btn-lg" href="tel:<%= site.phone.tel %>"><%- icon('phone') %> Call <%= site.phone.display %></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div>
+      <a class="brand brand-light" href="/"><img src="/images/logo.svg" alt="" width="44" height="44" loading="lazy"><span class="brand-text"><strong>Dr. Rawat’s</strong><small>Dental Care</small></span></a>
+      <p class="foot-about"><%= site.tagline %>. Patient-focused dental care at <%= site.address %>.</p>
+      <% if (site.instagram || site.facebook) { %>
+        <p class="foot-social">
+          <% if (site.instagram) { %><a href="<%= site.instagram %>" target="_blank" rel="noopener">Instagram</a><% } %>
+          <% if (site.facebook) { %><a href="<%= site.facebook %>" target="_blank" rel="noopener">Facebook</a><% } %>
+        </p>
+      <% } %>
+    </div>
+    <div>
+      <h3>Explore</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/dentist">Our Dentist</a></li>
+        <li><a href="/reviews">Reviews</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Visit us</h3>
+      <address><%= site.address %></address>
+      <p><a href="<%= site.mapsLink %>" target="_blank" rel="noopener">Open in Google Maps</a></p>
+      <p><a href="<%= site.justdialLink %>" target="_blank" rel="noopener">Justdial listing</a></p>
+    </div>
+    <div>
+      <h3>Appointments</h3>
+      <p><a href="tel:<%= site.phone.tel %>"><%= site.phone.display %></a></p>
+      <p><a href="/contact#book">Request an appointment</a></p>
+      <% if (site.email) { %><p><a href="mailto:<%= site.email %>"><%= site.email %></a></p><% } %>
+      <% site.hours.forEach(function (h) { %><p><%= h.day %>: <%= h.time %></p><% }) %>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© <%= year %> Dr. Rawat’s Dental Care. All rights reserved.</span>
+  </div>
+</footer>
+
+<div class="mbar" role="group" aria-label="Quick contact">
+  <a class="mbar-call" href="tel:<%= site.phone.tel %>"><%- icon('phone') %> Call</a>
+  <a class="mbar-book" href="/contact#book">Book an Appointment</a>
+</div>
+
+<script src="/js/main.js?v=<%= site.version %>" defer></script>
+</body>
+</html>

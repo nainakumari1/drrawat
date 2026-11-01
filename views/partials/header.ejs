@@ -1,0 +1,36 @@
+<header class="site-header" id="top">
+  <div class="topbar">
+    <div class="wrap topbar-in">
+      <span><%= site.address %></span>
+      <a href="tel:<%= site.phone.tel %>"><%- icon('phone') %> <%= site.phone.display %></a>
+    </div>
+  </div>
+  <div class="wrap nav-row">
+    <a class="brand" href="/" aria-label="<%= site.fullName %> – home">
+      <img src="/images/logo.svg" alt="" width="44" height="44">
+      <span class="brand-text"><strong>Dr. Rawat’s</strong><small>Dental Care</small></span>
+    </a>
+
+    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+
+    <nav id="menu" class="menu" aria-label="Main">
+      <a href="/" class="<%= page.nav === 'home' ? 'on' : '' %>">Home</a>
+      <a href="/about" class="<%= page.nav === 'about' ? 'on' : '' %>">About Us</a>
+      
+      <div class="dd <%= page.nav === 'services' ? 'on' : '' %>">
+        <a href="/services" class="dd-link" aria-haspopup="true">Services <svg viewBox="0 0 10 6" width="10" height="6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+        <div class="dd-menu">
+          <% site.services.forEach(function (s) { %>
+            <a href="/services#<%= s.id %>"><%- icon(s.icon) %> <%= s.label %></a>
+          <% }) %>
+        </div>
+      </div>
+      <a href="/dentist" class="<%= page.nav === 'dentist' ? 'on' : '' %>">Our Dentist</a>
+      <a href="/reviews" class="<%= page.nav === 'reviews' ? 'on' : '' %>">Reviews</a>
+      <a href="/contact" class="<%= page.nav === 'contact' ? 'on' : '' %>">Contact Us</a>
+      <a class="btn btn-call nav-call" href="tel:<%= site.phone.tel %>"><%- icon('phone') %> Call</a>
+      <a class="btn btn-book" href="/contact#book">Book an Appointment</a>
+    </nav>
+  </div>
+</header>
+<main id="main">

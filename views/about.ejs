@@ -1,0 +1,26 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="page-hero"><span class="blob b1"></span><div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <span>About Us</span></nav>
+  <h1 class="reveal">About Dr. Rawat’s Dental Care</h1>
+  <p class="lead reveal d1">Patient comfort, clear communication and careful examination, at <%= site.address %>.</p>
+</div></section>
+<section class="section"><div class="wrap split">
+  <div class="reveal slide-l"><%- visual('clinic-1', 'Dr. Rawat’s Dental Care clinic, Pushp Vihar, Saket', 'landscape', { icon: 'tooth' }) %></div>
+  <div class="reveal d1">
+    <span class="eyebrow">Our approach</span>
+    <h2>Personal attention, explained clearly.</h2>
+    <p>Dr. Rawat’s Dental Care is a dental clinic in Pushp Vihar, Saket, New Delhi. Patient feedback consistently points to a gentle approach, clear communication and attention to comfort.</p>
+    <p>Reviewers describe a careful dental examination, a clean and well-maintained clinic, friendly staff and relatively short waiting times. Some mention modern equipment.</p>
+    <a class="btn btn-book" href="/contact#book">Book an Appointment</a>
+  </div>
+</div></section>
+<section class="section tint"><div class="wrap">
+  <div class="sec-head reveal"><span class="eyebrow">What we focus on</span><h2>What matters to our patients</h2></div>
+  <div class="grid g4"><% site.why.forEach(function (w, i) { %><article class="card why tilt reveal d<%= i % 3 %>"><div class="ico"><%- icon(w.icon) %></div><h3><%= w.title %></h3><p><%= w.text %></p></article><% }) %></div>
+</div></section>
+<section class="section"><div class="wrap">
+  <div class="sec-head reveal"><span class="eyebrow">Clinic gallery</span><h2>Take a look inside</h2></div>
+  <%- include('partials/gallery') %>
+</div></section>
+<%- include('partials/footer') %>

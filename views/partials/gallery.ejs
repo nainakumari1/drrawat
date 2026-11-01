@@ -1,0 +1,11 @@
+<% var shown = site.gallery.filter(function (g) { return hasImage('gallery-' + g.slug) || site.showPlaceholders; }); %>
+<% if (shown.length) { %>
+<div class="gallery g-mosaic">
+  <% shown.forEach(function (g, i) { %>
+    <figure class="g-tile reveal d<%= i % 3 %>">
+      <% if (hasImage('gallery-' + g.slug)) { %><%- visual('gallery-' + g.slug, g.label + ' at Dr. Rawat’s Dental Care', 'gal') %><% } else { %><div class="g-ph"><%- icon('tooth') %><span class="ph-tag">Photo to be added</span></div><% } %>
+      <figcaption><%= g.label %></figcaption>
+    </figure>
+  <% }) %>
+</div>
+<% } %>

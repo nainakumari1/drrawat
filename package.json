@@ -1,0 +1,18 @@
+{
+  "name": "dr-rawats-dental-care-website",
+  "version": "1.0.0",
+  "description": "Website for Dr. Rawat’s Dental Care, Pushp Vihar, Saket, New Delhi",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "22.x"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}

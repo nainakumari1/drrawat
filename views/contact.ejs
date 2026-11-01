@@ -1,0 +1,52 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="page-hero"><span class="blob b1"></span><div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <span>Contact Us</span></nav>
+  <h1 class="reveal">Contact &amp; book an appointment</h1>
+  <p class="lead reveal d1">Call the clinic or send an enquiry. We will contact you to confirm a time.</p>
+</div></section>
+<section class="section"><div class="wrap contact-grid">
+  <div>
+    <div class="info-card reveal">
+      <div class="info-row"><%- icon('pin') %><div><h3>Address</h3><p><%= site.address %></p></div></div>
+      <div class="info-row"><%- icon('phone') %><div><h3>Phone</h3><p><a href="tel:<%= site.phone.tel %>"><%= site.phone.display %></a></p></div></div>
+      <div class="info-row"><%- icon('clock') %><div><h3>Opening hours</h3>
+        <% site.hours.forEach(function (h) { %><p><%= h.day %>: <%= h.time %></p><% }) %>
+        <p class="muted small"><%= site.hoursNote %></p></div></div>
+      <% if (site.email) { %><div class="info-row"><%- icon('check') %><div><h3>Email</h3><p><a href="mailto:<%= site.email %>"><%= site.email %></a></p></div></div><% } %>
+    </div>
+    <div class="contact-btns reveal">
+      <a class="btn btn-book btn-lg" href="tel:<%= site.phone.tel %>"><%- icon('phone') %> Call now</a>
+      <a class="btn btn-ghost-dark btn-lg" href="<%= site.mapsLink %>" target="_blank" rel="noopener"><%- icon('pin') %> Get directions</a>
+    </div>
+  </div>
+  <div id="book" class="book-wrap">
+  <% if (sent) { %>
+    <div class="notice ok reveal in" role="status">
+      <h2>Thank you, we have your request.</h2>
+      <p>This is an enquiry, not a confirmed appointment. The clinic will contact you to confirm a time. If it is urgent, call <a href="tel:<%= site.phone.tel %>"><%= site.phone.display %></a>.</p>
+      <a class="btn btn-ghost-dark" href="/contact#book">Send another enquiry</a>
+    </div>
+  <% } else { %>
+    <form class="form reveal" action="/enquiry" method="post" aria-label="Appointment enquiry">
+      <h2>Request an appointment</h2>
+      <p class="muted">Tell us what suits you. Clinic hours: 10 AM – 2 PM and 5 PM – 8 PM.</p>
+      <% if (error) { %><p class="notice bad" role="alert">Please enter your name and a valid phone number, then try again.</p><% } %>
+      <label>Patient name<input type="text" name="name" autocomplete="name" required maxlength="80"></label>
+      <div class="two"><label>Phone number<input type="tel" name="phone" autocomplete="tel" inputmode="tel" required minlength="10" maxlength="20"></label>
+      <label>Email (optional)<input type="email" name="email" autocomplete="email" maxlength="120"></label></div>
+      <label>Required treatment<select name="treatment"><option value="">Select a treatment</option><% site.services.forEach(function (s) { %><option><%= s.label %></option><% }) %><option>Not sure / other</option></select></label>
+      <div class="two"><label>Preferred date<input type="date" name="date" id="f-date"></label>
+      <label>Preferred time<input type="time" name="time" id="f-time" min="10:00" max="20:00"></label></div>
+      <label>Additional message<textarea name="message" rows="3" maxlength="500"></textarea></label>
+      <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btn-book btn-lg shine" type="submit">Send enquiry</button>
+    </form>
+  <% } %>
+  </div>
+</div>
+<div class="wrap" style="margin-top:56px">
+  <div class="sec-head reveal"><span class="eyebrow">Find us</span><h2>Location on Google Maps</h2><p><%= site.address %></p></div>
+  <%- include('partials/mapblock') %>
+</div></section>
+<%- include('partials/footer') %>

@@ -1,0 +1,110 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<section class="hero">
+  <span class="blob b1"></span><span class="blob b2"></span>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="chip reveal"><%- icon('heart') %> Gentle · Clear · Comfortable</p>
+      <h1 class="reveal d1">Gentle dental care for a healthier, more <span class="swoosh">confident smile</span></h1>
+      <p class="lead reveal d2">Experience patient-focused dental care with clear guidance, a gentle approach, and a comfortable clinic environment.</p>
+      <div class="hero-btns reveal d3">
+        <a class="btn btn-book btn-lg shine" href="/contact#book">Book an Appointment</a>
+        <a class="btn btn-ghost-dark btn-lg" href="tel:<%= site.phone.tel %>"><%- icon('phone') %> Call Now</a>
+      </div>
+      <p class="hero-loc reveal d4"><%- icon('pin') %> <span><%= site.address %></span></p>
+      <% if (site.ratings.show) { %><p class="hero-rate reveal d4"><%= site.ratings.score %> ★ from <%= site.ratings.count %> reviews on <%= site.ratings.source %> · <%= site.ratings.asOf %></p><% } %>
+    </div>
+    <div class="hero-visual reveal d2">
+      <div class="hero-frame"><%- visual('hero', 'Dr. Rawat’s Dental Care, Pushp Vihar, Saket', 'hero-img', { eager: true, icon: 'tooth' }) %></div>
+      <div class="fchip f1"><%- icon('heart') %> Gentle approach</div>
+      <div class="fchip f2"><%- icon('users') %> Clear explanations</div>
+      <div class="fchip f3"><%- icon('shield') %> Clean clinic</div>
+    </div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40c240 60 480 60 720 20s480-40 720 10v10H0Z" fill="#fff"/></svg>
+</section>
+
+<div class="marquee" aria-label="Treatments">
+  <div class="marquee-track">
+    <% for (var k = 0; k < 2; k++) { site.services.forEach(function (s) { %><span><%- icon(s.icon) %> <%= s.label %></span><% }) } %>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap split">
+    <div class="reveal slide-l"><%- visual('clinic-1', 'Dr. Rawat’s Dental Care clinic, Pushp Vihar, Saket', 'landscape', { icon: 'tooth' }) %></div>
+    <div class="reveal d1">
+      <span class="eyebrow">About the clinic</span>
+      <h2>Care that starts with listening.</h2>
+      <p>Dr. Rawat’s Dental Care is a dental clinic at <%= site.address %>. Patients describe a careful examination, clear explanations and personal attention from the dentist, in a clean and comfortable clinic.</p>
+      <p>If dental visits make you nervous, you are not alone. Reviewers say that is exactly where this clinic’s calm, gentle approach helped.</p>
+      <a class="btn btn-call" href="/about">More about the clinic</a>
+    </div>
+  </div>
+</section>
+
+<section class="section tint">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Dental treatments</span><h2>Simple, clearly explained care</h2></div>
+    <div class="grid g3 svc-grid">
+      <% site.services.forEach(function (s, i) { %>
+        <a class="card svc tilt reveal d<%= i % 3 %>" href="/services#<%= s.id %>">
+          <span class="num">0<%= i + 1 %></span>
+          <div class="ico"><%- icon(s.icon) %></div><h3><%= s.title %></h3><p><%= s.short %></p>
+          <span class="more">Learn more <%- icon('arrow') %></span>
+        </a>
+      <% }) %>
+      <a class="card svc svc-cta tilt reveal d2" href="/contact#book"><div class="ico"><%- icon('phone') %></div><h3>Not sure what you need?</h3><p>Book a checkup and the dentist will explain your options.</p><span class="more">Book an appointment <%- icon('arrow') %></span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Why patients like us</span><h2>Comfort comes first</h2></div>
+    <div class="grid g4">
+      <% site.why.forEach(function (w, i) { %><article class="card why tilt reveal d<%= i % 3 %>"><div class="ico"><%- icon(w.icon) %></div><h3><%= w.title %></h3><p><%= w.text %></p></article><% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section tint">
+  <div class="wrap split">
+    <div class="reveal slide-l"><%- visual('doctor-shivani-rawat', 'Dr. Shivani Rawat, Dr. Rawat’s Dental Care', 'portrait', { icon: 'tooth' }) %></div>
+    <div class="reveal d1">
+      <span class="eyebrow">Meet the dentist</span>
+      <h2><%= site.doctor.name %></h2>
+      <p><%= site.doctor.intro %></p>
+      <% if (site.showPlaceholders) { %><p class="ph-tag">Qualifications and experience: to be added once confirmed</p><% } %>
+      <p><a class="btn btn-call" href="/dentist">View profile</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Patient reviews</span><h2>What patients say</h2>
+      <% if (site.ratings.show) { %><p><%= site.ratings.score %> ★ from <%= site.ratings.count %> reviews on <%= site.ratings.source %>. <%= site.ratings.asOf %>.</p><% } %></div>
+    <div class="rv-grid">
+      <% site.reviews.forEach(function (r, i) { %><%- include('partials/reviewcard', { r: r, delay: 'd' + (i % 3) }) %><% }) %>
+    </div>
+    <p class="center reveal" style="margin-top:30px"><a class="btn btn-book" href="<%= site.mapsLink %>" target="_blank" rel="noopener"><%- icon('star') %> See us on Google Maps</a></p>
+  </div>
+</section>
+
+<section class="section tint">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Clinic gallery</span><h2>A look around the clinic</h2></div>
+    <%- include('partials/gallery') %>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Find us</span><h2>Visit us in Saket</h2><p><%= site.address %></p></div>
+    <%- include('partials/mapblock') %>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

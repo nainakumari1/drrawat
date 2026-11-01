@@ -1,0 +1,9 @@
+<div class="map-card reveal">
+  <iframe title="Dr. Rawat’s Dental Care on Google Maps"
+    src="https://maps.google.com/maps?q=<%= encodeURIComponent('Dr. Rawat’s Dental Care, ' + site.address) %>&z=17&output=embed&hl=en"
+    width="100%" height="420" style="border:0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <div class="map-actions">
+    <a class="btn btn-book" href="<%= site.mapsLink %>" target="_blank" rel="noopener"><%- icon('pin') %> Get directions</a>
+    <a class="btn btn-ghost-dark" href="tel:<%= site.phone.tel %>"><%- icon('phone') %> Call now</a>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<% var d = site.doctor;
+   function row(label, val) { return val ? '<li><strong>' + label + '</strong> ' + String(val).replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</li>' : (site.showPlaceholders ? '<li><strong>' + label + '</strong> <span class="ph-tag">To be added once confirmed</span></li>' : ''); } %>
+<section class="page-hero"><span class="blob b1"></span><div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <span>Our Dentist</span></nav>
+  <h1 class="reveal">Meet <%= d.name %></h1>
+  <p class="lead reveal d1">The dentist patients describe as gentle, thorough and clear.</p>
+</div></section>
+<section class="section"><div class="wrap split">
+  <div class="reveal slide-l"><%- visual('doctor-shivani-rawat', d.name + ', Dr. Rawat’s Dental Care', 'portrait', { icon: 'tooth' }) %></div>
+  <div class="reveal d1">
+    <h2><%= d.name %></h2>
+    <p><%= d.intro %></p>
+    <ul class="profile"><%- row('Full name', d.fullName) %><%- row('Qualifications', d.qualifications) %><%- row('Specialisation', d.specialisation) %><%- row('Experience', d.experience) %><%- row('Registration', d.registration) %></ul>
+    <h3 class="mini">What patients highlight</h3>
+    <ul class="ticks"><% d.themes.forEach(function (t) { %><li><%- icon('check') %> <%= t %></li><% }) %></ul>
+    <a class="btn btn-book" href="/contact#book">Book an Appointment</a>
+  </div>
+</div></section>
+<%- include('partials/footer') %>
